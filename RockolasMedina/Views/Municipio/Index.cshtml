@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/cssRockolas.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+<h2>Municipios</h2>
+
+<label>Ingrese Departamento</label>
+<input type="text" id="txtdepto" />
+<br />
+<!-- Lanzar modal con el boton -->
+<button onclick="abrirModal(0)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+<div id="tabla">
+
+</div>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+<div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Municipios</h4>
+            </div>
+            <div class="modal-body">
+                <table style="width:80%;margin:auto">
+                    <tr>
+                        <td width="40%">ID</td>
+                        <td width="100%"><input class="borrar" type="text" id="txtIDmunicipio" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Municipio</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtMunicipio" /></td>
+                    </tr>
+                    <tr>
+                        <td>Departamento</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtDepto" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ruta</td>
+                        <td><select class="borrar obligatorio" id="cboRutaPopup"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Habilitado</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtHabilitado" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button onclick="Agregar()" type="button" class="btn btn-primary">Aceptar</button>
+                <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/Municipio.js"></script>
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

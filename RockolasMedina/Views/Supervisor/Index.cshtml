@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/cssRockolas.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+<h2>Supervisores</h2>
+
+<label>Ingrese Estado Del Tecnico</label>
+
+<select id="cboSupervisor"></select>
+
+<input type="button" id="btnBuscar" value="Buscar" class="btn btn-success" />
+<input type="button" id="btnLimpiar" value="Limpiar" class="btn btn-warning" />
+<br />
+<!-- Lanzar modal con el boton -->
+<button onclick="abrirModal(0)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+<div id="tabla">
+
+</div>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Supervisores</h4>
+            </div>
+            <div class="modal-body">
+                <table style="width:80%;margin:auto">
+                    <tr>
+                        <td width="40%">ID Tecnico</td>
+                        <td width="60%"><input class="borrar" type="text" id="txtIDsupervisor" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtNombre" /></td>
+                    </tr>
+                    <tr>
+                        <td>Apellido</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtApellido" /></td>
+                    </tr>
+                    <tr>
+                        <td>Teléfono</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtTelefono" /></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha Contratación</td>
+                        <td><input class="borrar obligatorio" id="datepickerSupervisor" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td><select class="borrar obligatorio" id="cboEstadoPopup"></select></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button onclick="Agregar()" type="button" class="btn btn-primary">Aceptar</button>
+                <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/Supervisor.js"></script>
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+

@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/cssRockolas.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+<h2>Rentas</h2>
+
+<label>Ingrese ID Renta</label>
+<input type="text" id="txtid" />
+
+<input type="button" id="btnBuscar" value="Buscar" class="btn btn-success" />
+<input type="button" id="btnLimpiar" value="Limpiar" class="btn btn-warning" />
+<br />
+<!-- Lanzar modal con el boton -->
+<button onclick="abrirModal(0)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+<div id="tabla">
+
+</div>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Rentas</h4>
+            </div>
+            <div class="modal-body">
+                <table style="width:80%;margin:auto">
+                    <tr>
+                        <td width="40%">ID Renta</td>
+                        <td width="60%"><input class="borrar" type="text" id="txtIDrenta" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Cliente</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtCliente" /></td>
+                    </tr>
+                    <tr>
+                        <td>DPI</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtDPI" /></td>
+                    </tr>
+                    <tr>
+                        <td>Telefono</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtTelefono" /></td>
+                    </tr>
+                    <tr>
+                        <td>Direccion</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtDireccion" /></td>
+                    </tr>
+                    <tr>
+                        <td>Rockola</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtRockola" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ruta</td>
+                        <td><select class="borrar obligatorio" id="cboRutaPopup"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Municipio</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtMunicipio" /></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha Renta</td>
+                        <td><input class="borrar obligatorio" id="datepickerRenta" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Habilitado</td>
+                        <td><input class="borrar obligatorio" type="text" id="txtHabilitado" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button onclick="Agregar()" type="button" class="btn btn-primary">Aceptar</button>
+                <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/Renta.js"></script>
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+

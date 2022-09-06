@@ -1,0 +1,55 @@
+﻿@using RockolasMedina.Models; 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Rockolas Medina</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/cssRockolas.css" rel="stylesheet" />
+    <link href="http://fonts.cdnfonts.com/css/anonymous-pro?styles=36" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header p1">
+                @{
+                    int nElementos = Variable.acciones.Count();
+                    for (var i = 0; i < nElementos; i++)
+                    {
+                        @Html.ActionLink(Variable.mensajes[i], Variable.acciones[i], Variable.controladores[i], new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                }
+
+                @*@Html.ActionLink("Rockolas", "Index", "Rockola", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Reparaciones", "Index", "Reparacion", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cortes", "Index", "Corte", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tecnicos", "Index", "Tecnico", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Ventas", "Index", "Venta", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Rentas", "Index", "Renta", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Municipios", "Index", "Municipio", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Supervisores", "Index", "Supervisor", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Asignar Rol", "Index", "RolPagina", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Usuarios", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })*@
+                @Html.ActionLink("Cerrar", "Cerrar", "Login", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Rockolas Medina</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</body>
+</html>

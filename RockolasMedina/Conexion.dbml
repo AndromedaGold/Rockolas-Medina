@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RockolasMedina" Class="ConexionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-TNB8S8L;Initial Catalog=RockolasMedina;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="RockolasMedinaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Corte" Member="Cortes">
+    <Type Name="Corte">
+      <Column Name="IDcorte" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContadorParcial" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ContadorFinal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Efectivo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FechaCorte" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDrockola" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDruta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDtecnico" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rockola_Corte" Member="Rockola" ThisKey="IDrockola" OtherKey="IDrockola" Type="Rockola" IsForeignKey="true" />
+      <Association Name="Ruta_Corte" Member="Ruta" ThisKey="IDruta" OtherKey="IDruta" Type="Ruta" IsForeignKey="true" />
+      <Association Name="Tecnico_Corte" Member="Tecnico" ThisKey="IDtecnico" OtherKey="IDtecnico" Type="Tecnico" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estado" Member="Estados">
+    <Type Name="Estado">
+      <Column Name="IDestado" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Estados" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Estado_Supervisor" Member="Supervisors" ThisKey="IDestado" OtherKey="IDestado" Type="Supervisor" />
+      <Association Name="Estado_Tecnico" Member="Tecnicos" ThisKey="IDestado" OtherKey="IDestado" Type="Tecnico" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Municipio" Member="Municipios">
+    <Type Name="Municipio">
+      <Column Name="IDmunicipio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Departamento" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IDruta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Municipio_Renta" Member="Rentas" ThisKey="IDmunicipio" OtherKey="IDmunicipio" Type="Renta" />
+      <Association Name="Ruta_Municipio" Member="Ruta" ThisKey="IDruta" OtherKey="IDruta" Type="Ruta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pagina" Member="Paginas">
+    <Type Name="Pagina">
+      <Column Name="IDpagina" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Accion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Controlador" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Pagina_RolPagina" Member="RolPaginas" ThisKey="IDpagina" OtherKey="IDpagina" Type="RolPagina" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Renta" Member="Rentas">
+    <Type Name="Renta">
+      <Column Name="IDrenta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClienteRentaNombre" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DPInumero" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TelefonoCliente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IDrockola" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDruta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDmunicipio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaRenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Municipio_Renta" Member="Municipio" ThisKey="IDmunicipio" OtherKey="IDmunicipio" Type="Municipio" IsForeignKey="true" />
+      <Association Name="Rockola_Renta" Member="Rockola" ThisKey="IDrockola" OtherKey="IDrockola" Type="Rockola" IsForeignKey="true" />
+      <Association Name="Ruta_Renta" Member="Ruta" ThisKey="IDruta" OtherKey="IDruta" Type="Ruta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reparacion" Member="Reparacions">
+    <Type Name="Reparacion">
+      <Column Name="IDreparacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParteNombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IDruta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDtecnico" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaReparacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="IDrockola" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Ruta_Reparacion" Member="Ruta" ThisKey="IDruta" OtherKey="IDruta" Type="Ruta" IsForeignKey="true" />
+      <Association Name="Tecnico_Reparacion" Member="Tecnico" ThisKey="IDtecnico" OtherKey="IDtecnico" Type="Tecnico" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rockola" Member="Rockolas">
+    <Type Name="Rockola">
+      <Column Name="IDrockola" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="motherb" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ram" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="procesador" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="fuentep" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="hddcapacidad" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="monitor" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="teclado" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="fechaFabricacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rockola_Corte" Member="Cortes" ThisKey="IDrockola" OtherKey="IDrockola" Type="Corte" />
+      <Association Name="Rockola_Renta" Member="Rentas" ThisKey="IDrockola" OtherKey="IDrockola" Type="Renta" />
+      <Association Name="Rockola_Venta" Member="Ventas" ThisKey="IDrockola" OtherKey="IDrockola" Type="Venta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol" Member="Rols">
+    <Type Name="Rol">
+      <Column Name="IDrol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rol_RolPagina" Member="RolPaginas" ThisKey="IDrol" OtherKey="IDrol" Type="RolPagina" />
+      <Association Name="Rol_Usuario" Member="Usuarios" ThisKey="IDrol" OtherKey="IDrol" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RolPagina" Member="RolPaginas">
+    <Type Name="RolPagina">
+      <Column Name="IDrol" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDpagina" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Pagina_RolPagina" Member="Pagina" ThisKey="IDpagina" OtherKey="IDpagina" Type="Pagina" IsForeignKey="true" />
+      <Association Name="Rol_RolPagina" Member="Rol" ThisKey="IDrol" OtherKey="IDrol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ruta" Member="Rutas">
+    <Type Name="Ruta">
+      <Column Name="IDruta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Ruta_Corte" Member="Cortes" ThisKey="IDruta" OtherKey="IDruta" Type="Corte" />
+      <Association Name="Ruta_Municipio" Member="Municipios" ThisKey="IDruta" OtherKey="IDruta" Type="Municipio" />
+      <Association Name="Ruta_Renta" Member="Rentas" ThisKey="IDruta" OtherKey="IDruta" Type="Renta" />
+      <Association Name="Ruta_Reparacion" Member="Reparacions" ThisKey="IDruta" OtherKey="IDruta" Type="Reparacion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Supervisor" Member="Supervisors">
+    <Type Name="Supervisor">
+      <Column Name="IDsupervisor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FechaAlt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDestado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDtipousuario" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="bTieneUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Estado_Supervisor" Member="Estado" ThisKey="IDestado" OtherKey="IDestado" Type="Estado" IsForeignKey="true" />
+      <Association Name="TipoUsuario_Supervisor" Member="TipoUsuario" ThisKey="IDtipousuario" OtherKey="IDtipousuario" Type="TipoUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tecnico" Member="Tecnicos">
+    <Type Name="Tecnico">
+      <Column Name="IDtecnico" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FechaAlt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDestado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDtipousuario" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="bTieneUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Tecnico_Corte" Member="Cortes" ThisKey="IDtecnico" OtherKey="IDtecnico" Type="Corte" />
+      <Association Name="Tecnico_Reparacion" Member="Reparacions" ThisKey="IDtecnico" OtherKey="IDtecnico" Type="Reparacion" />
+      <Association Name="Estado_Tecnico" Member="Estado" ThisKey="IDestado" OtherKey="IDestado" Type="Estado" IsForeignKey="true" />
+      <Association Name="TipoUsuario_Tecnico" Member="TipoUsuario" ThisKey="IDtipousuario" OtherKey="IDtipousuario" Type="TipoUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoRockola" Member="TipoRockolas">
+    <Type Name="TipoRockola">
+      <Column Name="IDtiporockola" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="TipoRockola_Venta" Member="Ventas" ThisKey="IDtiporockola" OtherKey="IDtiporockola" Type="Venta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoUsuario" Member="TipoUsuarios">
+    <Type Name="TipoUsuario">
+      <Column Name="IDtipousuario" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TipoUsuario_Supervisor" Member="Supervisors" ThisKey="IDtipousuario" OtherKey="IDtipousuario" Type="Supervisor" />
+      <Association Name="TipoUsuario_Tecnico" Member="Tecnicos" ThisKey="IDtipousuario" OtherKey="IDtipousuario" Type="Tecnico" />
+      <Association Name="TipoUsuario_Usuario" Member="Usuarios" ThisKey="IDtipousuario" OtherKey="TipoUsuario" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="IDusuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Contraseña" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TipoUsuario" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDrol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="IDrol" OtherKey="IDrol" Type="Rol" IsForeignKey="true" />
+      <Association Name="TipoUsuario_Usuario" Member="TipoUsuario1" ThisKey="TipoUsuario" OtherKey="IDtipousuario" Type="TipoUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Venta" Member="Ventas">
+    <Type Name="Venta">
+      <Column Name="IDventa" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDtiporockola" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IDrockola" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Habilitado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NombreCliente" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="FechaVenta" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Rockola_Venta" Member="Rockola" ThisKey="IDrockola" OtherKey="IDrockola" Type="Rockola" IsForeignKey="true" />
+      <Association Name="TipoRockola_Venta" Member="TipoRockola" ThisKey="IDtiporockola" OtherKey="IDtiporockola" Type="TipoRockola" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
