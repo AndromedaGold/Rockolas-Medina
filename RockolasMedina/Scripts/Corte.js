@@ -13,7 +13,7 @@ function listar() {
         crearListado(["ID","Cort/Parcial","Cort/Final","Efectivo","Fecha Corte","Rockola","Ruta","Tecnico","Habilitado"], data);
     });
 }
-
+//funcion para mostrar combos de rutas
 $.get("Corte/listarRuta", function (data) {
     llenarCombo(data, document.getElementById("cboRuta"), true)
     llenarCombo(data, document.getElementById("cboRutaPopup"), true)
