@@ -1,13 +1,13 @@
-﻿$("#datepickerCorte").datepicker(
+﻿//funcion para mostrar el calendario
+$("#datepickerCorte").datepicker(
     {
         dateFormat: "dd/mm/yy",
         changeMonth: true,
         changeYear: true
     }
 );
-
+//funcion para listar 
 listar();
-
 function listar() {
     $.get("Corte/listarCortes", function (data) {
         crearListado(["ID","Cort/Parcial","Cort/Final","Efectivo","Fecha Corte","Rockola","Ruta","Tecnico","Habilitado"], data);
